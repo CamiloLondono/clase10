@@ -1,16 +1,19 @@
 pipeline {
   agent any
 
-  tools {
-    // Asegúrate de tener configurado el tool 'Python3' en Jenkins
-    python 'Python3'
-  }
-
   environment {
     SONARQUBE_SERVER = 'sonarqube'
     SONAR_SCANNER_HOME = '/var/jenkins_home/tools/hudson.plugins.sonar.SonarRunnerInstallation/SonarScanner'
     VENV = "${WORKSPACE}\\venv"
   }
+  stages {
+    stage('Check Python Version') {
+      steps {
+      bat
+      '"C:\\Python313\\python.exe"--version'
+    }
+  }
+
 
   stages {
     stage('Checkout') {
