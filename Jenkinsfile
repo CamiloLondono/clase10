@@ -72,9 +72,10 @@ pipeline {
     stage('Lint') {
       steps {
         bat """
-          %VENV%\\Scripts\\pip.exe install pylint
-          %VENV%\\Scripts\\pylint.exe src --output-format=json > pylint-report.json || exit 0
-        """
+          call %VENV%\\Scripts\\activate.bat
+          pip install pylint
+          pylint src --output-format=json > pylint-report.json || exit 0
+          """
       }
     }
   }
