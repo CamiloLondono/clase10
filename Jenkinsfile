@@ -63,7 +63,7 @@ pipeline {
     stage('Push Docker Image') {
       steps {
         script {
-          docker.image('vladcamilo/calse10-taller').push()
+          docker.image('vladcamilo/clase10-taller').push()
         }
       }
     }
